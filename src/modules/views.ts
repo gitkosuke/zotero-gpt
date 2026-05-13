@@ -493,7 +493,7 @@ export default class Views {
           that.setTags(tags)
           that.renderTags();
           if (event.key == "s") {
-            new ztoolkit.ProgressWindow("Save Tag")
+            new ztoolkit.ProgressWindow("タグを保存")
               .createLine({ text: tag.tag, type: "success" })
               .show()
             return
@@ -508,7 +508,7 @@ export default class Views {
           // 运行文本呢
           if (event.key == "r") {
             // 长文本当作未保存的命令标签执行，长文本里可以写js
-            return that.execTag({tag: "Untitled", position: -1, color: "", trigger: "", text})
+            return that.execTag({tag: "無題", position: -1, color: "", trigger: "", text})
           }
         }
       }
@@ -564,7 +564,7 @@ export default class Views {
             that.messages = []
             // @ts-ignore
             this.value = ""
-            that.setText("success", true, false)
+            that.setText("成功しました", true, false)
           } else if (key == "help"){ 
             that.setText(help, true, false)
           } else if (key == "report") { 
@@ -595,7 +595,7 @@ export default class Views {
                     break;
                   } else {
                     ztoolkit.log("width Error")
-                    return that.setText(`Invalid value, ${value}, please enter a percentage, for example \`32 %\`.`, true, false)
+                    return that.setText(`無効な値です: ${value}。例: \`32%\` のようにパーセントで入力してください。`, true, false)
                   }
                 case "tagsMore":
                   if (["scroll", "expand"].indexOf(value) >= 0) {
@@ -603,7 +603,7 @@ export default class Views {
                     break;
                   } else {
                     ztoolkit.log("tagsMore Error")
-                    return that.setText(`Invalid value, ${value}, please enter \`expand\` or \`scroll\`.`, true, false)
+                    return that.setText(`無効な値です: ${value}。\`expand\` または \`scroll\` を入力してください。`, true, false)
                   }
                 default: 
                   Zotero.Prefs.set(`${config.addonRef}.${key}`, value)
@@ -618,7 +618,7 @@ export default class Views {
           } else {
             that.setText(help, true, false)
             const mdbody = that.outputContainer.querySelector(".markdown-body") as HTMLDivElement
-            mdbody.innerHTML = `<center><span style="color: #D14D72;font-weight:bold;font-size:20px;">Invalid Command, Please Read this.</span></center>` + mdbody.innerHTML
+            mdbody.innerHTML = `<center><span style="color: #D14D72;font-weight:bold;font-size:20px;">無効なコマンドです。以下を確認してください。</span></center>` + mdbody.innerHTML
           }
         } else {
           that.execText(text)
@@ -712,7 +712,7 @@ export default class Views {
               Meet.BetterNotes.insertEditorText(htmlString)
               this.hide()
               new ztoolkit.ProgressWindow(config.addonName)
-                .createLine({ text: "Insert To Main Note", type: "success" })
+                .createLine({ text: "メインノートに挿入しました", type: "success" })
                 .show()
               return
             }
@@ -730,13 +730,13 @@ export default class Views {
               if (editor && document.querySelector("#zotero-tb-toggle-notes-pane.toggled")) {
                 Meet.BetterNotes.insertEditorText(htmlString, editor)
                 new ztoolkit.ProgressWindow(config.addonName)
-                  .createLine({ text: "Insert To Note", type: "success" })
+                  .createLine({ text: "ノートに挿入しました", type: "success" })
                   .show()
                 return
               }
             }
             new ztoolkit.ProgressWindow(config.addonName)
-              .createLine({ text: "Copy Plain Text", type: "success" })
+              .createLine({ text: "プレーンテキストをコピーしました", type: "success" })
               .show()
           }
         }
@@ -925,7 +925,7 @@ export default class Views {
       .show()
     Meet.Global.popupWin = popunWin
     popunWin
-      .createLine({ text: "Generating input content...", type: "default" })
+      .createLine({ text: "入力内容を生成しています...", type: "default" })
     this.dotsContainer?.classList.add("loading")
     this.outputContainer.style.display = "none"
     ztoolkit.log(tag, this.getTags())
@@ -952,8 +952,8 @@ export default class Views {
         text = text.replace(rawString, await window.eval(`${codeString}`))
       } catch {  }
     }
-    popunWin.createLine({ text: `Characters ${text.length}`, type: "success" })
-    popunWin.createLine({ text: "Answering...", type: "default" })
+    popunWin.createLine({ text: `文字数 ${text.length}`, type: "success" })
+    popunWin.createLine({ text: "回答しています...", type: "default" })
     // 运行替换其中js代码
     text = await Meet.OpenAI.getGPTResponse(text) as string
     this.dotsContainer?.classList.remove("loading")
@@ -964,11 +964,11 @@ export default class Views {
             ${text}
           })
         `)
-        popunWin.createLine({ text: "Code is executed", type: "success" })
+        popunWin.createLine({ text: "コードを実行しました", type: "success" })
       } catch { }
-      popunWin.createLine({ text: "Done", type: "success" })
+      popunWin.createLine({ text: "完了しました", type: "success" })
     } else {
-      popunWin.createLine({ text: "Done", type: "fail" })
+      popunWin.createLine({ text: "完了しました", type: "fail" })
     }
     popunWin.startCloseTimer(3000)
   }
@@ -1312,11 +1312,11 @@ export default class Views {
               [
                 {
                   role: "user",
-                  content: `I am reading a PDF, and the following text is a part of the PDF. Please read it first, and I will ask you some question later: \n${Meet.Zotero.getPDFSelection()}`
+                  content: `PDFを読んでいます。次のテキストはPDFの一部です。先に読んでください。あとで質問します。\n${Meet.Zotero.getPDFSelection()}`
                 },
                 {
                   role: "assistant",
-                  content: "OK."
+                  content: "承知しました。"
                 }
               ]
             )

@@ -181,7 +181,7 @@ async function pdf2documents(itemkey: string) {
   // const popupWin = new ztoolkit.ProgressWindow("[Pending] PDF", { closeTime: -1 })
   //   .createLine({ text: `[1/${totalPageNum}] Reading`, progress: 1, type: "success" })
   //   .show()
-  const popupWin = Meet.Global.popupWin.createLine({ text: `[1/${totalPageNum}] Reading PDF`, progress: 1, type: "success" })
+  const popupWin = Meet.Global.popupWin.createLine({ text: `[1/${totalPageNum}] PDFを読んでいます`, progress: 1, type: "success" })
     .show()
   // 读取所有页面lines
   const pageLines: any = {}
@@ -196,13 +196,13 @@ async function pdf2documents(itemkey: string) {
       lines = lines.slice(0, index)
     }
     pageLines[pageNum] = lines
-    popupWin.changeLine({ idx: popupWin.lines.length - 1, text: `[${pageNum + 1}/${totalPageNum}] Reading PDF`, progress: (pageNum + 1) / totalPageNum * 100})
+    popupWin.changeLine({ idx: popupWin.lines.length - 1, text: `[${pageNum + 1}/${totalPageNum}] PDFを読んでいます`, progress: (pageNum + 1) / totalPageNum * 100})
     // 防止误杀
     if (index != -1 && pageNum / totalPageNum >= .9) {
       break
     }
   }
-  popupWin.changeLine({ idx: popupWin.lines.length - 1, text: "Reading PDF", progress: 100 })
+  popupWin.changeLine({ idx: popupWin.lines.length - 1, text: "PDFを読んでいます", progress: 100 })
   popupWin.changeLine({ progress: 100 });
   totalPageNum = Object.keys(pageLines).length
   for (let pageNum = 0; pageNum < totalPageNum; pageNum++) {

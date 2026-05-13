@@ -1,4 +1,4 @@
-#🔍SearchItems[position=9][color=#ED5629]
+#🔍項目を検索[position=9][color=#ED5629]
 
 现在你是一个数据库系统，下面是一些JSON信息，每个JSON对应Zotero一篇文献：
 

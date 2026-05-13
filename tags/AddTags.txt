@@ -1,4 +1,4 @@
-#🔭AddTags[position=9][color=#B7A7DB]
+#🔭タグを追加[position=9][color=#B7A7DB]
 
 下面是我在Zotero里创建的一些嵌套标签，它们以#开头，中间用/连接：
 ```js

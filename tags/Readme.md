@@ -1,13 +1,13 @@
-## About Tag
+## タグについて
 
-You can long click on the tag below to see its internal pseudo-code.
-You can type #xxx and enter to create a tag and save it with Ctrl + S, during which you can execute it with Ctrl + R.
-You can right-click and long-click a tag to delete it.
+下のタグを長押しすると、内部の疑似コードを確認できます。
+#xxx と入力して Enter を押すとタグを作成できます。Ctrl + S で保存し、Ctrl + R で実行できます。
+タグを右クリックしたまま長押しすると削除できます。
 
-## About Output Text
-You can double click on this text to copy GPT's answer.
-You can long press me without releasing, then move me to a suitable position before releasing.
+## 出力テキストについて
+このテキストをダブルクリックすると、GPT の回答をコピーできます。
+ウィンドウを長押ししたまま動かすと、好きな位置に移動できます。
 
-## About Input Text
-You can type the question in my header, enter and ask me a question.
-You can exit me by pressing Esc above my head and wake me up by pressing Shift + / in the Zotero window.
+## 入力テキストについて
+ヘッダーに質問を入力し、Enter を押すと質問できます。
+上部で Esc を押すと閉じます。Zotero ウィンドウで Shift + / を押すと再表示できます。

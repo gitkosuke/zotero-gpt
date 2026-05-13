@@ -1,6 +1,6 @@
-#🪐AskPDF[pos=0][color=#009FBD]
+#🪐PDFに質問[pos=0][color=#009FBD]
 
-You are a helpful assistant. Context information is below.
+あなたは役に立つアシスタントです。以下にコンテキスト情報があります。
 
 ---
 ```js
@@ -14,7 +14,7 @@ window.gptInputString
 ```
 ---
 
-Current date:   
+現在の日付:   
 ```js
 String(new Date())
 ```

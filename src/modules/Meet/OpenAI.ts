@@ -58,10 +58,10 @@ export async function similaritySearch(queryText: string, docs: Document[], obj:
   ztoolkit.log(_vv)
   let vv: any
   if (_vv) {
-    Meet.Global.popupWin.createLine({ text: "Reading embeddings...", type: "default" })
+    Meet.Global.popupWin.createLine({ text: "埋め込みを読み込んでいます...", type: "default" })
     vv = _vv
   } else {
-    Meet.Global.popupWin.createLine({ text: "Generating embeddings...", type: "default" })
+    Meet.Global.popupWin.createLine({ text: "埋め込みを生成しています...", type: "default" })
     vv = await embeddings.embedDocuments(docs.map((i: any) => i.pageContent))
     window.setTimeout(async () => {
       await storage.set(obj, id, vv)
@@ -71,7 +71,7 @@ export async function similaritySearch(queryText: string, docs: Document[], obj:
   const v0 = await embeddings.embedQuery(queryText)
   // 从20个里面找出文本最长的几个，防止出现较短但相似度高的段落影响回答准确度
   const relatedNumber = Zotero.Prefs.get(`${config.addonRef}.relatedNumber`) as number
-  Meet.Global.popupWin.createLine({ text: `Searching ${relatedNumber} related content...`, type: "default" })
+  Meet.Global.popupWin.createLine({ text: `関連コンテンツを ${relatedNumber} 件検索しています...`, type: "default" })
   const k = relatedNumber * 5
   const pp = vv.map((v: any) => similarity(v0, v));
   docs = [...pp].sort((a, b) => b - a).slice(0, k).map((p: number) => {
@@ -95,7 +95,7 @@ class OpenAIEmbeddings {
     const url = `${api}/v1/embeddings`
     if (!secretKey) {
       new ztoolkit.ProgressWindow(url, { closeOtherProgressWindows: true })
-        .createLine({ text: "Your secretKey is not configured.", type: "default" })
+        .createLine({ text: "シークレットキーが設定されていません。", type: "default" })
         .show()
       return
     }
@@ -128,7 +128,7 @@ class OpenAIEmbeddings {
             .createLine({ text: error.message, type: "default" })
             .show()
         } catch {
-          new ztoolkit.ProgressWindow("Error", { closeOtherProgressWindows: true })
+          new ztoolkit.ProgressWindow("エラー", { closeOtherProgressWindows: true })
             .createLine({ text: error.message, type: "default" })
             .show()
         }
@@ -245,7 +245,7 @@ export async function getGPTResponseByOpenAI(requestText: string) {
         .createLine({ text: error.message, type: "default" })
         .show()
     } catch {
-      new ztoolkit.ProgressWindow("Error", { closeOtherProgressWindows: true })
+      new ztoolkit.ProgressWindow("エラー", { closeOtherProgressWindows: true })
         .createLine({ text: error.message, type: "default" })
         .show()
     }
