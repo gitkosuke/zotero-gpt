@@ -1143,7 +1143,7 @@ export default class Views {
             }
           }
         ]
-      }, auxDiv)
+      }, auxDiv as Element)
     })
   }
 
@@ -1213,7 +1213,7 @@ export default class Views {
               {
                 type: "mouseenter",
                 listener: function () {
-                  nodes.forEach(e => e.classList.remove("selected"))
+                  nodes.forEach((e: Element) => e.classList.remove("selected"))
                   // @ts-ignore
                   this.classList.add("selected")
                   currentIndex = i
@@ -1248,7 +1248,7 @@ export default class Views {
         }
         return arr
       })() as any
-    }, document.documentElement)
+    }, document.documentElement) as HTMLDivElement
     
     const winRect = document.documentElement.getBoundingClientRect()
     const nodeRect = menuNode.getBoundingClientRect()
@@ -1281,7 +1281,7 @@ export default class Views {
       } else if (event.code == "Escape") {
         removeNode()
       }
-      nodes.forEach(e => e.classList.remove("selected"))
+      nodes.forEach((e: Element) => e.classList.remove("selected"))
       nodes[currentIndex].classList.add("selected")
     }
     document.addEventListener("keydown", keyDownHandler)
